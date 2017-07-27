@@ -1,0 +1,58 @@
+body { 
+    background: gainsboro;
+}
+
+h5 {
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+}
+
+input.hours {
+    border: 0; 
+    font-weight: bold;
+    padding-bottom: 5px;
+}
+
+table {
+    font-family: 'Roboto', sans-serif;
+    font-size: 10px;
+}
+
+th {
+    background: black;
+    color: white;
+    text-align: center;
+}
+
+th.day {
+    width: 15%;
+}
+
+td {
+    text-align: center;
+}
+
+td.available {
+    font-style: italic;
+    cursor: pointer;
+}
+
+td.full {
+    background: red;
+    color: white;
+    font-style: italic;
+    cursor: not-allowed;
+}
+
+td.unavailable {
+    background: #f2f2f2;
+    color: grey;
+    font-style: italic;
+    cursor: not-allowed;
+}
+
+td.selected {
+    background: green;
+    color: white;
+    font-style: normal;
+}

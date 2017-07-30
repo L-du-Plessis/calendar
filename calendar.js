@@ -111,11 +111,8 @@ function checkSlotAvailability (time, jobLength, date, availability) {
   return "Full";
 }
 
-function initializeView() {        
-  mainPanel();
-
-  // configure slider
-  $( document ).ready(function() {
+function initializeView() {
+    // configure slider
     $( "#slider" ).slider({
       value: 3,
       min: 1,
@@ -144,7 +141,6 @@ function initializeView() {
         }        
       }
     });   
-  });  
 }
 
 function mainPanel() {  // display main panel  
@@ -153,24 +149,30 @@ function mainPanel() {  // display main panel
       theme:           'primary',
       setstatus:       'maximize',
       contentOverflow: 'scroll',
-      content:         function(){ $(this).css('padding', '10px') },
-      contentAjax:     'content.html',
+      contentAjax:     {
+          url:     'content.html',
+          done:    function( data, textStatus, jqXHR, panel ) {
+              this.content.css('padding', '10px').append(data);
+              initializeView();
+          }
+      },
       headerTitle:     'Availability Calendar',
       headerControls:  { minimize: 'remove', close: 'remove' },
-      callback: function() {
-      }
     });
   }
   else {  // desktop
     $.jsPanel({
       theme:          'primary',
       contentSize:    { width: 840, height: 510 },
-      content:        function(){ $(this).css('padding', '30px') },
-      contentAjax:    'content.html',
+      contentAjax:    {
+          url:     'content.html',
+          done:    function( data, textStatus, jqXHR, panel ) {
+              this.content.css('padding', '30px').append(data);
+              initializeView();
+          }
+      },
       headerTitle:    'Availability Calendar',
       headerControls: { minimize: 'remove', close: 'remove' },
-      callback: function() {
-      }
     });
   }
 }
